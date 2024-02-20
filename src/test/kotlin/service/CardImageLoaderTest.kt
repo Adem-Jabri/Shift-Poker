@@ -1,6 +1,6 @@
 package service
 
-import entity.CardSuit
+import entity.CardColour
 import entity.CardValue
 import java.awt.image.BufferedImage
 import javax.imageio.ImageIO
@@ -41,7 +41,7 @@ class CardImageLoaderTest {
     @Test
     fun testLoadAll() {
         val allImages = mutableListOf<BufferedImage>()
-        CardSuit.values().forEach { suit ->
+        CardColour.values().forEach { suit ->
             CardValue.values().forEach { value ->
                 allImages += imageLoader.frontImageFor(suit, value)
             }
@@ -60,7 +60,7 @@ class CardImageLoaderTest {
      */
     @Test
     fun testCardEquality() {
-        val testImage = imageLoader.frontImageFor(CardSuit.HEARTS, CardValue.QUEEN)
+        val testImage = imageLoader.frontImageFor(CardColour.HEARTS, CardValue.QUEEN)
         assertTrue (testImage sameAs queenOfHearts)
     }
 
@@ -69,7 +69,7 @@ class CardImageLoaderTest {
      */
     @Test
     fun testCardUnequality() {
-        val testImage = imageLoader.frontImageFor(CardSuit.SPADES, CardValue.ACE)
+        val testImage = imageLoader.frontImageFor(CardColour.SPADES, CardValue.ACE)
         assertFalse(testImage sameAs queenOfHearts)
     }
 

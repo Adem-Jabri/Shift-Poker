@@ -2,15 +2,15 @@ package entity
 import kotlin.test.*
 class CardTest {
     // create test data
-    val inputCardSuit = CardSuit.HEARTS
+    val inputCardColour = CardColour.HEARTS
     val inputCardValue = CardValue.ACE
     val inputState : Boolean = false
-    val inputCardSuit2 = CardSuit.DIAMONDS
+    val inputCardColour2 = CardColour.DIAMONDS
     val inputCardValue2 = CardValue.FIVE
     val inputState2 : Boolean = true
     // the class will be tested with test data
-    val testCard = Card(inputState, inputCardSuit, inputCardValue)
-    val testCard2 = Card(inputState2, inputCardSuit2, inputCardValue2)
+    val testCard = Card(inputState, inputCardColour, inputCardValue)
+    val testCard2 = Card(inputState2, inputCardColour2, inputCardValue2)
 
     /**
      * check whether the attributes have been set correctly
@@ -18,11 +18,11 @@ class CardTest {
     @Test
     fun case(){
         assertEquals(inputState, testCard.hidden)
-        assertEquals(inputCardSuit, testCard.suit)
+        assertEquals(inputCardColour, testCard.suit)
         assertEquals(inputCardValue, testCard.value)
 
         assertEquals(inputState2, testCard2.hidden)
-        assertEquals(inputCardSuit2, testCard2.suit)
+        assertEquals(inputCardColour2, testCard2.suit)
         assertEquals(inputCardValue2, testCard2.value)
     }
     /**
@@ -32,8 +32,8 @@ class CardTest {
     @Test
     fun testToString() {
         // the method will be tested with this test data
-        val realToStringCard = "$inputState $inputCardSuit $inputCardValue"
-        val realToStringCard2 = "$inputState2 $inputCardSuit2 $inputCardValue2"
+        val realToStringCard = "$inputState $inputCardColour $inputCardValue"
+        val realToStringCard2 = "$inputState2 $inputCardColour2 $inputCardValue2"
         // check whether the method is working correctly
         assertEquals(realToStringCard, testCard.toString())
         assertEquals(realToStringCard2, testCard2.toString())

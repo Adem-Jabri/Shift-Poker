@@ -1,6 +1,6 @@
 package service
 
-import entity.CardSuit
+import entity.CardColour
 import entity.CardValue
 import java.awt.image.BufferedImage
 import javax.imageio.ImageIO
@@ -19,15 +19,15 @@ class CardImageLoader {
     /**
      * The full raster image containing the suits as rows (plus one special row for blank/back)
      * and values as columns (starting with the ace). As the ordering does not correctly reflect
-     * the order in which the suits are declared in [CardSuit], mappings via [row] and [column]
+     * the order in which the suits are declared in [CardColour], mappings via [row] and [column]
      * are required.
      */
     private val image : BufferedImage = ImageIO.read(CardImageLoader::class.java.getResource(CARDS_FILE))
 
     /**
-     * Provides the card image for the given [CardSuit] and [CardValue]
+     * Provides the card image for the given [CardColour] and [CardValue]
      */
-    fun frontImageFor(suit: CardSuit, value: CardValue) =
+    fun frontImageFor(suit: CardColour, value: CardValue) =
         getImageByCoordinates(value.column, suit.row)
 
     /**
@@ -60,15 +60,15 @@ class CardImageLoader {
 
 /**
  * As the [CARDS_FILE] does not have the same ordering of suits
- * as they are in [CardSuit], this extension property provides
+ * as they are in [CardColour], this extension property provides
  * a corresponding mapping to be used when addressing the row.
  *
  */
-private val CardSuit.row get() = when (this) {
-    CardSuit.CLUBS -> 0
-    CardSuit.DIAMONDS -> 1
-    CardSuit.HEARTS -> 2
-    CardSuit.SPADES -> 3
+private val CardColour.row get() = when (this) {
+    CardColour.CLUBS -> 0
+    CardColour.DIAMONDS -> 1
+    CardColour.HEARTS -> 2
+    CardColour.SPADES -> 3
 }
 
 

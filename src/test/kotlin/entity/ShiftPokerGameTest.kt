@@ -10,13 +10,13 @@ class ShiftPokerGameTest {
         // create test data
         val reus = Player("reus")
         val lewa = Player("lewa")
-        val firstCard = Card(false, CardSuit.DIAMONDS, CardValue.SEVEN)
-        val secondCard = Card(false, CardSuit.CLUBS, CardValue.KING)
-        val thirdCard = Card(false, CardSuit.DIAMONDS, CardValue.QUEEN)
-        val forthCard = Card(true, CardSuit.HEARTS, CardValue.QUEEN)
-        val fifthCard = Card(true, CardSuit.HEARTS, CardValue.KING)
-        val sixthCard = Card(true, CardSuit.HEARTS, CardValue.NINE)
-        val seventhCard = Card(true, CardSuit.HEARTS, CardValue.EIGHT)
+        val firstCard = Card(false, CardColour.DIAMONDS, CardValue.SEVEN)
+        val secondCard = Card(false, CardColour.CLUBS, CardValue.KING)
+        val thirdCard = Card(false, CardColour.DIAMONDS, CardValue.QUEEN)
+        val forthCard = Card(true, CardColour.HEARTS, CardValue.QUEEN)
+        val fifthCard = Card(true, CardColour.HEARTS, CardValue.KING)
+        val sixthCard = Card(true, CardColour.HEARTS, CardValue.NINE)
+        val seventhCard = Card(true, CardColour.HEARTS, CardValue.EIGHT)
         val inputRoundCount = 5
         val inputActivePlayer = 1
 

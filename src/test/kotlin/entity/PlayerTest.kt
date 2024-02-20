@@ -1,11 +1,11 @@
 package entity
 import kotlin.test.*
 class PlayerTest {
-    val firstCard = Card(false, CardSuit.DIAMONDS, CardValue.SEVEN)
-    val secondCard = Card(false, CardSuit.CLUBS, CardValue.KING)
-    val thirdCard = Card(false, CardSuit.DIAMONDS, CardValue.QUEEN)
-    val forthCard = Card(true, CardSuit.HEARTS, CardValue.QUEEN)
-    val fifthCard = Card(true, CardSuit.HEARTS, CardValue.KING)
+    val firstCard = Card(false, CardColour.DIAMONDS, CardValue.SEVEN)
+    val secondCard = Card(false, CardColour.CLUBS, CardValue.KING)
+    val thirdCard = Card(false, CardColour.DIAMONDS, CardValue.QUEEN)
+    val forthCard = Card(true, CardColour.HEARTS, CardValue.QUEEN)
+    val fifthCard = Card(true, CardColour.HEARTS, CardValue.KING)
 
     // create test data
     val inputName = "reus"
