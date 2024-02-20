@@ -9,9 +9,9 @@ package entity
 
 class ShiftPokerGame ( var roundCount: Int = 2, var activePlayer: Int ) {
 
-    var playerList: MutableList<Player> = mutableListOf<Player>()
-    var shiftDeck: MutableList<Card> = mutableListOf<Card>()
-    var drawPile: MutableList<Card> = mutableListOf<Card>()
-    var discardPile: MutableList<Card> = mutableListOf<Card>()
+    var playerList: MutableList<Player> = mutableListOf()
+    var shiftDeck: MutableList<Card> = mutableListOf()
+    var drawPile: MutableList<Card> = mutableListOf()
+    var discardPile: MutableList<Card> = mutableListOf()
 
 }

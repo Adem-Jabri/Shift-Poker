@@ -6,5 +6,5 @@ package entity
  */
 
 class Card (var hidden: Boolean, val suit: CardSuit, val value: CardValue){
-    override fun toString() = "$hidden ${suit.toString()} ${value.toString()}"
+    override fun toString() = "$hidden $suit $value"
 }

@@ -8,9 +8,9 @@ package entity
 
 class Player( var name : String ){
 
-    var revealedCards: MutableList<Card> = mutableListOf<Card>()
-    var hiddenCards: MutableList<Card> = mutableListOf<Card>()
+    var revealedCards: MutableList<Card> = mutableListOf()
+    var hiddenCards: MutableList<Card> = mutableListOf()
 
-    override fun toString(): String = "$name: H${hiddenCards.toString()} R${revealedCards.toString()}"
+    override fun toString(): String = "$name: H$hiddenCards R$revealedCards"
 
 }
