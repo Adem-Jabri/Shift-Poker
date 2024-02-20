@@ -28,7 +28,7 @@ class PlayerTest {
     }
     /**
      * Check if to String produces the correct strings for some test cards
-     * of all four suits.
+     * of all four colours.
      */
     @Test
     fun testToString() {

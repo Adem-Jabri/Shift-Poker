@@ -5,6 +5,6 @@ package entity
  * Each Card is characterized by a [CardColour] and a [CardValue]
  */
 
-class Card (var hidden: Boolean, val suit: CardColour, val value: CardValue){
-    override fun toString() = "$hidden $suit $value"
+class Card (var hidden: Boolean, val cardColour: CardColour, val value: CardValue){
+    override fun toString() = "$hidden $cardColour $value"
 }

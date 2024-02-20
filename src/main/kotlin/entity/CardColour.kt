@@ -1,7 +1,7 @@
 package entity
 
 /**
- * Enum to distinguish between the four possible suits in a french-suited card game:
+ * Enum to distinguish between the four possible colours in a french-suited card game:
  * clubs, spades, hearts, or diamonds
  */
 enum class CardColour {
@@ -12,7 +12,7 @@ enum class CardColour {
     ;
 
     /**
-     * provide a single character to represent this suit.
+     * provide a single character to represent this colour.
      * Returns one of: ♣/♠/♥/♦
      */
     override fun toString() = when(this) {

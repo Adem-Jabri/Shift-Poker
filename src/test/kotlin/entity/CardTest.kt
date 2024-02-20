@@ -18,16 +18,16 @@ class CardTest {
     @Test
     fun case(){
         assertEquals(inputState, testCard.hidden)
-        assertEquals(inputCardColour, testCard.suit)
+        assertEquals(inputCardColour, testCard.cardColour)
         assertEquals(inputCardValue, testCard.value)
 
         assertEquals(inputState2, testCard2.hidden)
-        assertEquals(inputCardColour2, testCard2.suit)
+        assertEquals(inputCardColour2, testCard2.cardColour)
         assertEquals(inputCardValue2, testCard2.value)
     }
     /**
      * Check if to String produces the correct strings for some test cards
-     * of all four suits.
+     * of all four colours.
      */
     @Test
     fun testToString() {
