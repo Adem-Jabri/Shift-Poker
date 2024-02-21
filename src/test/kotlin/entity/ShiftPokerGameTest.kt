@@ -6,7 +6,7 @@ class ShiftPokerGameTest {
      * check whether the attributes have been set correctly
      */
     @Test
-    fun case(){
+    fun createGameTest(){
         // create test data
         val reus = Player("reus")
         val lewa = Player("lewa")

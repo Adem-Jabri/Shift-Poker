@@ -5,6 +5,9 @@ package entity
  * Each Card is characterized by a [CardColour] and a [CardValue]
  */
 
-class Card (var hidden: Boolean, val cardColour: CardColour, val value: CardValue){
+data class Card (var hidden: Boolean, val cardColour: CardColour, val value: CardValue){
+    /**
+     * provide a string to represent the Card.
+     */
     override fun toString() = "$hidden $cardColour $value"
 }

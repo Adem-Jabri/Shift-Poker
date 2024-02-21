@@ -1,22 +1,22 @@
 package entity
 import kotlin.test.*
 class PlayerTest {
-    val firstCard = Card(false, CardColour.DIAMONDS, CardValue.SEVEN)
-    val secondCard = Card(false, CardColour.CLUBS, CardValue.KING)
-    val thirdCard = Card(false, CardColour.DIAMONDS, CardValue.QUEEN)
-    val forthCard = Card(true, CardColour.HEARTS, CardValue.QUEEN)
-    val fifthCard = Card(true, CardColour.HEARTS, CardValue.KING)
+    private val firstCard = Card(false, CardColour.DIAMONDS, CardValue.SEVEN)
+    private val secondCard = Card(false, CardColour.CLUBS, CardValue.KING)
+    private val thirdCard = Card(false, CardColour.DIAMONDS, CardValue.QUEEN)
+    private val forthCard = Card(true, CardColour.HEARTS, CardValue.QUEEN)
+    private val fifthCard = Card(true, CardColour.HEARTS, CardValue.KING)
 
     // create test data
-    val inputName = "reus"
-    val inputHiddenCards = mutableListOf(forthCard, fifthCard)
-    val inputRevealedCards = mutableListOf(firstCard, secondCard, thirdCard)
+    private val inputName = "reus"
+    private val inputHiddenCards = mutableListOf(forthCard, fifthCard)
+    private val inputRevealedCards = mutableListOf(firstCard, secondCard, thirdCard)
 
     /**
      * check whether the attributes have been set correctly
      */
     @Test
-    fun case(){
+    fun createPlayerTest(){
         // the class will be tested with test data
         val reus = Player(inputName)
         reus.hiddenCards = inputHiddenCards

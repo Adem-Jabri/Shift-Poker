@@ -1,4 +1,5 @@
 package entity
+
 /**
  * Entity class that represents a game state of "ShiftPoker". This class is just a wrapper
  * for the player objects through [playerList] and for the cards in [shiftDeck], in [drawPile] and in [discardPile].
@@ -7,7 +8,7 @@ package entity
  *
  */
 
-class ShiftPokerGame ( var roundCount: Int = 2, var activePlayer: Int ) {
+data class ShiftPokerGame(val roundCount: Int = 2, val activePlayer: Int) {
 
     var playerList: MutableList<Player> = mutableListOf()
     var shiftDeck: MutableList<Card> = mutableListOf()

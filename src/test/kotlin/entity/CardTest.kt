@@ -2,21 +2,21 @@ package entity
 import kotlin.test.*
 class CardTest {
     // create test data
-    val inputCardColour = CardColour.HEARTS
-    val inputCardValue = CardValue.ACE
-    val inputState : Boolean = false
-    val inputCardColour2 = CardColour.DIAMONDS
-    val inputCardValue2 = CardValue.FIVE
-    val inputState2 : Boolean = true
+    private val inputCardColour = CardColour.HEARTS
+    private val inputCardValue = CardValue.ACE
+    private val inputState : Boolean = false
+    private val inputCardColour2 = CardColour.DIAMONDS
+    private val inputCardValue2 = CardValue.FIVE
+    private val inputState2 : Boolean = true
     // the class will be tested with test data
-    val testCard = Card(inputState, inputCardColour, inputCardValue)
-    val testCard2 = Card(inputState2, inputCardColour2, inputCardValue2)
+    private val testCard = Card(inputState, inputCardColour, inputCardValue)
+    private val testCard2 = Card(inputState2, inputCardColour2, inputCardValue2)
 
     /**
      * check whether the attributes have been set correctly
      */
     @Test
-    fun case(){
+    fun createCardTest(){
         assertEquals(inputState, testCard.hidden)
         assertEquals(inputCardColour, testCard.cardColour)
         assertEquals(inputCardValue, testCard.value)
