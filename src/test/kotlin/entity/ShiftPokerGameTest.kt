@@ -18,7 +18,7 @@ class ShiftPokerGameTest {
         val sixthCard = Card(true, CardColour.HEARTS, CardValue.NINE)
         val seventhCard = Card(true, CardColour.HEARTS, CardValue.EIGHT)
         val inputRoundCount = 5
-        val inputActivePlayer = 1
+        val inputActivePlayer = 2
 
         // the class will be tested with test data
         val newGame = ShiftPokerGame(inputRoundCount, inputActivePlayer)
