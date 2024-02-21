@@ -1,5 +1,8 @@
 package entity
 import kotlin.test.*
+/**
+ * test for the class [Card]
+ */
 class CardTest {
     // create test data
     private val inputCardColour = CardColour.HEARTS

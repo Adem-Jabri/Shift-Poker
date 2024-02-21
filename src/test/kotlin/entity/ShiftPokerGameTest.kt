@@ -1,6 +1,8 @@
 package entity
 import kotlin.test.*
-
+/**
+ * test for the class [ShiftPokerGame]
+ */
 class ShiftPokerGameTest {
     /**
      * check whether the attributes have been set correctly

@@ -1,5 +1,9 @@
 package entity
 import kotlin.test.*
+
+/**
+ * test for the class [Player]
+ */
 class PlayerTest {
     private val firstCard = Card(false, CardColour.DIAMONDS, CardValue.SEVEN)
     private val secondCard = Card(false, CardColour.CLUBS, CardValue.KING)
