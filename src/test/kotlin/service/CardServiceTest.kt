@@ -22,7 +22,7 @@ class CardServiceTest {
     }
 
     /**
-     * test for the method hide()
+     * test for the method reveal()
      */
     @Test
     fun revealTest(){
@@ -31,10 +31,14 @@ class CardServiceTest {
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
+        // cards are already hidden, so reveal the directly
         cardService.reveal()
         assertEquals(false, game.playerList[game.activePlayer].hiddenCards[0].hidden)
         assertEquals(false, game.playerList[game.activePlayer].hiddenCards[1].hidden)
     }
+    /**
+     * test for the method hide()
+     */
     @Test
     fun hideTest(){
         val cardService = rootService.cardService
@@ -42,9 +46,11 @@ class CardServiceTest {
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
+        // reveal all the cards
         for(card in game.playerList[game.activePlayer].hiddenCards){
             card.hidden = false
         }
+        // call hide() function
         cardService.hide()
         assertEquals(true, game.playerList[game.activePlayer].hiddenCards[0].hidden)
         assertEquals(true, game.playerList[game.activePlayer].hiddenCards[1].hidden)

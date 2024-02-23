@@ -60,9 +60,11 @@ class ShiftPokerGameServiceTest {
      */
     @Test
     fun nextPlayerTest(){
-
+        // fails when the current game is null
         val gameService = rootService.shiftPokerGameService
         assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
+
+        //check whether activePlayer is incremented
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
@@ -70,11 +72,16 @@ class ShiftPokerGameServiceTest {
         assertEquals(1, game.activePlayer)
         gameService.nextPlayer()
         assertEquals(0, game.activePlayer)
+        // the game ends when all the rounds have been played
         game.roundCount = 0
         gameService.nextPlayer()
-
+        //we cannot call nexPlayer() because the game was ended
+        assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
     }
 
+    /**
+     * check whether the game will be nut after calling endGame()
+     */
     @Test
     fun endGameTest(){
         val gameService = rootService.shiftPokerGameService
@@ -94,14 +101,13 @@ class ShiftPokerGameServiceTest {
         gameService.startGame(3, mutableListOf(reus, pique))
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
-        // change the cards of each player, otherwise they will be randomly generated
+        // change the cards of each player, because they will be randomly distributed
         game.playerList[0].hiddenCards = hiddenCards
         game.playerList[0].revealedCards = revealedCards
         game.playerList[1].hiddenCards = hiddenCards2
         game.playerList[1].revealedCards = revealedCards2
         val test = gameService.evaluateGame()
-
-
+        // the secondPlayer (index 1) should be first because its hand is stonger
         val expected = listOf( Pair(listOf(game.playerList[1]), "Straight Flush"),
             Pair(listOf(game.playerList[0]) , "Straight"))
 

@@ -19,14 +19,17 @@ class PlayerServiceTest {
     fun shiftCardsTest() {
         val gameService = rootService.shiftPokerGameService
         val playerService = rootService.playerService
+        // start Game
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
         assertNotNull(game)
+        // invalid attribute
         assertFailsWith<IllegalArgumentException> { playerService.shiftCards(2) }
+
         val oldShiftDeck = game.shiftDeck
         val drawnCard = game.drawPile[0]
-        drawnCard.hidden = false
+        drawnCard.hidden = false  // so that the player can shift
         val expectedNewShiftDeckAfterShiftToTheRight = mutableListOf(drawnCard, oldShiftDeck[0], oldShiftDeck[1])
         playerService.shiftCards(1)
 
@@ -45,10 +48,9 @@ class PlayerServiceTest {
         playerService.shiftCards(-1)
         assertEquals(expectedNewShiftDeckAfterShiftToTheLeft, game.shiftDeck)
 
+        // check what happens if game is null, shifted must be false to pass the first requirement
         playerService.shifted = false
         rootService.game = null
-        //gameService.endGame()
-        //print(rootService.game)
         assertFailsWith<IllegalStateException> { rootService.playerService.shiftCards(-1) }
         playerService.shifted = false
         assertFailsWith<IllegalStateException> { rootService.playerService.shiftCards(1)}
@@ -60,55 +62,53 @@ class PlayerServiceTest {
     @Test
     fun showCardsTest() {
         val gameService = rootService.shiftPokerGameService
-        val playerService = rootService.playerService
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
 
         rootService.playerService.showCards()
         assertNotNull(game)
+        // check whether the private cards are know revealed for the active player
         assertEquals(false, game.playerList[game.activePlayer].hiddenCards[0].hidden)
         assertEquals(false, game.playerList[game.activePlayer].hiddenCards[1].hidden)
-
+        // case game is null
         rootService.game = null
         assertFailsWith<IllegalStateException> { rootService.playerService.showCards() }
     }
 
     /**
-     * test for the method swapOne
+     * test for the method swapOne()
      */
     @Test
     fun swapOneTest(){
-
-
         val gameService = rootService.shiftPokerGameService
         val playerService = rootService.playerService
-
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
+        // must shift first
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(3, 2) }
         playerService.shiftCards(1)
-
+        // invalid parameters
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(2, 3) }
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(3, 1) }
-
-
+        // check if the swap works correctly
         val newShiftDeck = game.shiftDeck
         val revealedCards = game.playerList[game.activePlayer].revealedCards
         val expectedShiftDeck = mutableListOf(newShiftDeck[0], newShiftDeck[1], revealedCards[0])
         playerService.swapOne(2,0)
         assertEquals(expectedShiftDeck, game.shiftDeck)
-
+        // swap only once
         playerService.swapped = true
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(2, 1) }
+
         playerService.swapped = true
         playerService.shifted = true
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(2,2) }
+        // case game is null, swapped must be false to pass the first requirement
         playerService.swapped = false
         rootService.game = null
         assertFailsWith<IllegalStateException> { rootService.playerService.swapOne(2,2) }
-        //assertFails { " null " }()
     }
     /**
      * test for the method swapOne
@@ -120,19 +120,20 @@ class PlayerServiceTest {
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
-
+        //must shift first
         assertFailsWith<IllegalArgumentException> { playerService.swapAll() }
-
+        // now the player shifts
         playerService.shiftCards(1)
-        val newShiftDeck = game.shiftDeck
+        // checks whether the cards will be swapped correctly
         val expectedShiftDeck = game.playerList[game.activePlayer].revealedCards
         playerService.swapAll()
         assertEquals(expectedShiftDeck, game.shiftDeck)
         assertNotNull(game)
+        // swap only once
         playerService.swapped = true
         playerService.shifted = true
         assertFailsWith<IllegalArgumentException> { playerService.swapAll() }
-
+        // case game is null
         playerService.swapped = false
         rootService.game = null
         assertFailsWith<IllegalStateException> { rootService.playerService.swapAll() }
@@ -147,13 +148,14 @@ class PlayerServiceTest {
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
-
+        // must shift first
         assertFailsWith<IllegalArgumentException> { playerService.pass() }
+        // active Player shifts
         playerService.shiftCards(1)
         playerService.pass()
         assertNotNull(game)
         assertEquals(1, game.activePlayer)
-
+        // case game is null
         playerService.shifted = true
         rootService.game = null
         assertFailsWith<IllegalStateException> { rootService.playerService.pass() }
