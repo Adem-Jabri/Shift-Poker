@@ -23,8 +23,8 @@ class ShiftPokerGameTest {
         val inputActivePlayer = 2
 
         // the class will be tested with test data
-        val newGame = ShiftPokerGame(inputRoundCount, inputActivePlayer)
-        newGame.playerList = mutableListOf(reus, lewa)
+        val newGame = ShiftPokerGame(inputRoundCount, mutableListOf(reus, lewa))
+        newGame.activePlayer = inputActivePlayer
         newGame.shiftDeck = mutableListOf(firstCard, secondCard, thirdCard)
         newGame.drawPile = mutableListOf(forthCard, fifthCard, sixthCard, seventhCard)
         newGame.discardPile = mutableListOf(secondCard, thirdCard)

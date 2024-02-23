@@ -8,9 +8,9 @@ package entity
  *
  */
 
-data class ShiftPokerGame(val roundCount: Int = 2, val activePlayer: Int) {
+data class ShiftPokerGame(var roundCount: Int, var playerList: MutableList<Player> = mutableListOf()) {
 
-    var playerList: MutableList<Player> = mutableListOf()
+    var activePlayer: Int = 0;
     var shiftDeck: MutableList<Card> = mutableListOf()
     var drawPile: MutableList<Card> = mutableListOf()
     var discardPile: MutableList<Card> = mutableListOf()

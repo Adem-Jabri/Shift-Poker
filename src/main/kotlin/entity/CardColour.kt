@@ -16,10 +16,10 @@ enum class CardColour {
      * Returns one of: ♣/♠/♥/♦
      */
     override fun toString() = when(this) {
-        CLUBS -> "♣"
-        SPADES -> "♠"
-        HEARTS -> "♥"
-        DIAMONDS -> "♦"
+        CLUBS -> "C"
+        SPADES -> "S"
+        HEARTS -> "H"
+        DIAMONDS -> "D"
     }
 
 
