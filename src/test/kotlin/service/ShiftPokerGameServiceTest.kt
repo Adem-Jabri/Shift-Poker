@@ -95,8 +95,11 @@ class ShiftPokerGameServiceTest {
         game.playerList[1].hiddenCards = hiddenCards2
         game.playerList[1].revealedCards = revealedCards2
         val test = gameService.evaluateGame()
-        print(test)
-        val expected = listOf( Pair(listOf(pique), "Straight Flush"), Pair(listOf(reus), "Straight"))
+        
+
+        val expected = listOf( Pair(listOf(game.playerList[1]), "Straight Flush"),
+            Pair(listOf(game.playerList[0]) , "Straight"))
+
         assertEquals(expected, test)
     }
 
