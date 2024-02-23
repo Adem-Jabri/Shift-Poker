@@ -27,6 +27,7 @@ class CardService(val rootService: RootService) : AbstractRefreshingService() {
         for (card in game.playerList[game.activePlayer].hiddenCards) {
             card.hidden = true
         }
+        onAllRefreshables { refreshAfterFlip(game.playerList[game.activePlayer].hiddenCards) }
     }
 
     /**
@@ -38,5 +39,6 @@ class CardService(val rootService: RootService) : AbstractRefreshingService() {
         for (card in game.playerList[game.activePlayer].hiddenCards) {
             card.hidden = false
         }
+        onAllRefreshables { refreshAfterFlip(game.playerList[game.activePlayer].hiddenCards) }
     }
 }

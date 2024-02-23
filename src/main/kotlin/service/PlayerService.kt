@@ -43,6 +43,7 @@ class PlayerService(private val rootService: RootService) : AbstractRefreshingSe
         val discardCard = game.shiftDeck[0]
         game.discardPile.add(discardCard)
         game.shiftDeck.removeAt(0)
+        onAllRefreshables { refreshAfterShift(-1) }
     }
 
     /**
@@ -62,6 +63,8 @@ class PlayerService(private val rootService: RootService) : AbstractRefreshingSe
         val discardCard = game.shiftDeck[game.shiftDeck.size - 1]
         game.discardPile.add(discardCard)
         game.shiftDeck.removeAt(game.shiftDeck.size - 1)
+
+        onAllRefreshables { refreshAfterShift(1) }
     }
 
     /**
@@ -98,14 +101,14 @@ class PlayerService(private val rootService: RootService) : AbstractRefreshingSe
         val temp = game.shiftDeck[deckIndex]
         game.shiftDeck[deckIndex] = game.playerList[game.activePlayer].revealedCards[revealedIndex]
         game.playerList[game.activePlayer].revealedCards[revealedIndex] = temp
-
+        onAllRefreshables { refreshAfterSwap(false) }
         rootService.shiftPokerGameService.nextPlayer()
 
 
     }
 
     /**
-     * it works only if the active player is making his first swap action
+     * it works only if the active player is making his first swap action,
      * and it will swap the cards in the shift deck with the revealed cards of the active player
      */
     fun swapAll() {
@@ -122,6 +125,7 @@ class PlayerService(private val rootService: RootService) : AbstractRefreshingSe
         game.shiftDeck = game.playerList[game.activePlayer].revealedCards
         game.playerList[game.activePlayer].revealedCards = temp
 
+        onAllRefreshables { refreshAfterSwap(true) }
         rootService.shiftPokerGameService.nextPlayer()
     }
 
