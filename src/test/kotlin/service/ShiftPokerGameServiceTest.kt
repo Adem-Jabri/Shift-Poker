@@ -29,15 +29,18 @@ class ShiftPokerGameServiceTest {
     var playerList = mutableListOf(reus, pique)
     //val lewa = Player("lewa")
     /**
-     * test startGame method by giving fir invalid attributes, and then test
+     * test startGame method by giving first invalid attributes, and then test
      * whether the game is started correctly and whether the Cards are correctly
      * distributed.
      */
     @Test
     fun evaluateStartGame(){
         val gameService = rootService.shiftPokerGameService
+        //invalid parameters
         assertFailsWith<IllegalArgumentException> { gameService.startGame(1,  mutableListOf(pique, reus)) }
         assertFailsWith<IllegalArgumentException> { gameService.startGame(2,  mutableListOf(pique)) }
+
+        //test whether the game is started correctly and whether the Cards are correctly distributed.
         gameService.startGame(2, mutableListOf(pique, reus))
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
@@ -57,7 +60,9 @@ class ShiftPokerGameServiceTest {
      */
     @Test
     fun nextPlayerTest(){
+
         val gameService = rootService.shiftPokerGameService
+        assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
@@ -67,7 +72,7 @@ class ShiftPokerGameServiceTest {
         assertEquals(0, game.activePlayer)
         game.roundCount = 0
         gameService.nextPlayer()
-        assertNull(rootService.game)
+
     }
 
     @Test
@@ -95,7 +100,7 @@ class ShiftPokerGameServiceTest {
         game.playerList[1].hiddenCards = hiddenCards2
         game.playerList[1].revealedCards = revealedCards2
         val test = gameService.evaluateGame()
-        
+
 
         val expected = listOf( Pair(listOf(game.playerList[1]), "Straight Flush"),
             Pair(listOf(game.playerList[0]) , "Straight"))

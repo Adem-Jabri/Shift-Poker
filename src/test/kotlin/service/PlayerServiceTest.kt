@@ -44,6 +44,14 @@ class PlayerServiceTest {
         val expectedNewShiftDeckAfterShiftToTheLeft = mutableListOf(oldShiftDeck2[1], oldShiftDeck2[2], drawnCard2)
         playerService.shiftCards(-1)
         assertEquals(expectedNewShiftDeckAfterShiftToTheLeft, game.shiftDeck)
+
+        playerService.shifted = false
+        rootService.game = null
+        //gameService.endGame()
+        //print(rootService.game)
+        assertFailsWith<IllegalStateException> { rootService.playerService.shiftCards(-1) }
+        playerService.shifted = false
+        assertFailsWith<IllegalStateException> { rootService.playerService.shiftCards(1)}
     }
 
     /**
@@ -61,6 +69,9 @@ class PlayerServiceTest {
         assertNotNull(game)
         assertEquals(false, game.playerList[game.activePlayer].hiddenCards[0].hidden)
         assertEquals(false, game.playerList[game.activePlayer].hiddenCards[1].hidden)
+
+        rootService.game = null
+        assertFailsWith<IllegalStateException> { rootService.playerService.showCards() }
     }
 
     /**
@@ -68,17 +79,19 @@ class PlayerServiceTest {
      */
     @Test
     fun swapOneTest(){
+
+
         val gameService = rootService.shiftPokerGameService
         val playerService = rootService.playerService
+
         gameService.startGame(2, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
-
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(3, 2) }
         playerService.shiftCards(1)
-        assertNotNull(game)
+
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(2, 3) }
-        assertFailsWith<IllegalArgumentException> { playerService.swapOne(1, 3) }
+        assertFailsWith<IllegalArgumentException> { playerService.swapOne(3, 1) }
 
 
         val newShiftDeck = game.shiftDeck
@@ -89,6 +102,13 @@ class PlayerServiceTest {
 
         playerService.swapped = true
         assertFailsWith<IllegalArgumentException> { playerService.swapOne(2, 1) }
+        playerService.swapped = true
+        playerService.shifted = true
+        assertFailsWith<IllegalArgumentException> { playerService.swapOne(2,2) }
+        playerService.swapped = false
+        rootService.game = null
+        assertFailsWith<IllegalStateException> { rootService.playerService.swapOne(2,2) }
+        //assertFails { " null " }()
     }
     /**
      * test for the method swapOne
@@ -110,7 +130,12 @@ class PlayerServiceTest {
         assertEquals(expectedShiftDeck, game.shiftDeck)
         assertNotNull(game)
         playerService.swapped = true
+        playerService.shifted = true
         assertFailsWith<IllegalArgumentException> { playerService.swapAll() }
+
+        playerService.swapped = false
+        rootService.game = null
+        assertFailsWith<IllegalStateException> { rootService.playerService.swapAll() }
     }
     /**
      * test for the Method swap()
@@ -128,6 +153,10 @@ class PlayerServiceTest {
         playerService.pass()
         assertNotNull(game)
         assertEquals(1, game.activePlayer)
+
+        playerService.shifted = true
+        rootService.game = null
+        assertFailsWith<IllegalStateException> { rootService.playerService.pass() }
     }
 
 }
