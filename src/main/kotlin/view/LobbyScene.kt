@@ -66,6 +66,7 @@ class LobbyScene(private val rootService: RootService) :
         onKeyTyped = {
             letsGoButton.isDisabled = p1Input.text.isBlank() || this.text.isBlank() ||
                     this.text.length > 10 || p1Input .text.length > 10
+                    || this.text.uppercase() == p1Input.text.uppercase()
         }
     }
 
@@ -82,7 +83,8 @@ class LobbyScene(private val rootService: RootService) :
     ).apply {
         onKeyTyped = {
             letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || !components.contains(this)
-                    || this.text.length > 10
+                    || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
+                    || this.text.uppercase() == p1Input.text.uppercase()
         }
     }
 
@@ -99,7 +101,9 @@ class LobbyScene(private val rootService: RootService) :
     ).apply {
         onKeyTyped = {
             letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || !components.contains(this)
-                    || this.text.length > 10
+                    || this.text.length > 10 || this.text.uppercase() == p3Input.text.uppercase()
+                    || this.text.uppercase() == p2Input.text.uppercase()
+                    || this.text.uppercase() == p1Input.text.uppercase()
         }
     }
 
