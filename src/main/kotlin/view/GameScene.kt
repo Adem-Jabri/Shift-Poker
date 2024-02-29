@@ -39,10 +39,10 @@ class GameScene(private val rootService: RootService) :
     val game = rootService.game
     private var shiftButton: Button = Button(
         posY = 630,
-        posX = 1050,
-        width = 150,
+        posX = 1030,
+        width = 170,
         height = 25,
-        text = "Shift Cards"
+        text = "Choose Shift Direction"
     ).apply {
         onMouseClicked = {
             this.isDisabled = true
@@ -91,8 +91,8 @@ class GameScene(private val rootService: RootService) :
 
     private var swapOneButton: Button = Button(
         posY = 660,
-        posX = 1050,
-        width = 150,
+        posX = 1030,
+        width = 170,
         height = 25,
         text = "Swap One"
     ).apply {
@@ -110,8 +110,8 @@ class GameScene(private val rootService: RootService) :
 
     private var swapAllButton: Button = Button(
         posY = 690,
-        posX = 1050,
-        width = 150,
+        posX = 1030,
+        width = 170,
         height = 25,
         text = "Swap All"
     ).apply {
@@ -129,8 +129,8 @@ class GameScene(private val rootService: RootService) :
 
     private var passButton: Button = Button(
         posY = 720,
-        posX = 1050,
-        width = 150,
+        posX = 1030,
+        width = 170,
         height = 25,
         text = "Pass"
     ).apply {
@@ -149,8 +149,8 @@ class GameScene(private val rootService: RootService) :
 
     private var quitButton = Button(
         posY = 750,
-        posX = 1050,
-        width = 150,
+        posX = 1030,
+        width = 170,
         height = 25,
         text = "End Game"
     ).apply {
