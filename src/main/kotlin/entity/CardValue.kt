@@ -47,6 +47,9 @@ enum class CardValue {
             ACE -> "A"
         }
 
+    /**
+     * An integer would be assigned to each card value
+     */
     fun valToInt(): Int {
         return when (this) {
             TWO ->  2

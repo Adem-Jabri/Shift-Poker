@@ -23,10 +23,16 @@ class RootService {
      */
     var game: ShiftPokerGame? = null
 
+    /**
+     * takes a list of refreshables
+     */
     fun addRefreshables(vararg newRefreshables: Refreshable) {
         newRefreshables.forEach { addRefreshable(it) }
     }
 
+    /**
+     * each element of the list given to the method [addRefreshables] will be given to this method
+     */
     private fun addRefreshable(newRefreshable: Refreshable) {
         shiftPokerGameService.addRefreshable(newRefreshable)
         playerService.addRefreshable(newRefreshable)

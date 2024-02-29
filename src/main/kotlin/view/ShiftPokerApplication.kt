@@ -3,7 +3,7 @@ package view
 import entity.Player
 import service.RootService
 import tools.aqua.bgw.core.BoardGameApplication
-import tools.aqua.bgw.core.MenuScene
+
 
 
 /**
@@ -43,7 +43,9 @@ class ShiftPokerApplication : BoardGameApplication("ShiftPoker Game"), Refreshab
         this.showGameScene(gameScene)
         this.showMenuScene(startMenuScene)
     }
-
+    /**
+     * perform refreshes that are necessary after clicking the startButton
+     */
     fun refreshAfterMenuScene() {
         this.showMenuScene(lobbyScene)
     }

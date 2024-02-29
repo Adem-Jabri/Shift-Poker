@@ -140,7 +140,8 @@ class ShiftPokerGameService(val rootService: RootService) : AbstractRefreshingSe
 
         // Check for consecutive values
         val isStraight = hand.windowed(2, 1).all { (a, b) ->
-            (a.value.valToInt() - b.value.valToInt() == 1) || (a.value == CardValue.ACE && hand.last().value == CardValue.TWO)
+            (a.value.valToInt() - b.value.valToInt() == 1)
+                    || (a.value == CardValue.ACE && hand.last().value == CardValue.TWO)
         }
 
         // Check for special case where Ace is used as a low card in a straight (A, 2, 3, 4, 5)

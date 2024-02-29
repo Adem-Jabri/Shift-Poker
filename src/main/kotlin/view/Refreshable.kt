@@ -22,15 +22,28 @@ interface Refreshable {
      */
     fun refreshAfterStartGame() {}
 
+    /**
+     * perform refreshes that are necessary after a Flip
+     */
     fun refreshAfterFlip(hiddenCards: List<Card>){}
 
+    /**
+     * perform refreshes that are necessary after a swap
+     */
     fun refreshAfterSwap(swapAll: Boolean){}
 
+    /**
+     * perform refreshes that are necessary after a shift
+     */
     fun refreshAfterShift(direction: Int){}
 
-    fun refreshAfterNextPlayer(){}
     /**
-     * perform refreshes that are necessary after the last round was played
+     * perform refreshes that are necessary after a nextPlayer() call
+     */
+    fun refreshAfterNextPlayer(){}
+
+    /**
+     * perform refreshes that are necessary after End game
      */
     fun refreshAfterEndGame(ranking: MutableList<Pair<List<Player>, String>>) {}
 

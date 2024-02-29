@@ -10,8 +10,8 @@ import tools.aqua.bgw.visual.ColorVisual
 import java.awt.Color
 
 /**
- * [MenuScene] that is displayed when the game is finished. It shows the score of the players.
- * Also there are two buttons: one for starting a new game and one for
+ * [MenuScene] that is displayed when the game is finished. It shows the score of the players,
+ * also there are two buttons: one for starting a new game and one for
  * quitting the program.
  */
 
@@ -77,7 +77,10 @@ class EndScene(private val rootService: RootService) :
         visual = ColorVisual(color = Color.green)
     )
 
-
+    /**
+     * this function will create a new List of the results with different structure to get access
+     * directly to all the players with their rank.
+     */
     fun makeItEasy(ranking: MutableList<Pair<List<Player>, String>>): MutableList<Pair<Int, Pair<Player, String>>?> {
 
         val game = rootService.game
@@ -108,37 +111,50 @@ class EndScene(private val rootService: RootService) :
         val realRanking = makeItEasy(ranking)
         when (game.playerList.size) {
             3 -> {
-                removeComponents(replayButton, goodbyeButton, winner4Label, winner3Label, winner2Label, winner1Label, gameOverLabel)
+                removeComponents(replayButton, goodbyeButton, winner4Label,
+                    winner3Label, winner2Label, winner1Label, gameOverLabel)
                 winner1Label.text =
-                    "${realRanking[0]!!.first} :  " + realRanking[0]!!.second.first + " : " + realRanking[0]!!.second.second
+                    "${realRanking[0]?.first} :  " + realRanking[0]?.second?.first + " : " +
+                            realRanking[0]?.second?.second
                 winner2Label.text =
-                    "${realRanking[1]!!.first} :  " + realRanking[1]!!.second.first + " : " + realRanking[1]!!.second.second
+                    "${realRanking[1]?.first} :  " + realRanking[1]?.second?.first + " : " +
+                            realRanking[1]?.second?.second
                 winner3Label.text =
-                    "${realRanking[2]!!.first} :  " + realRanking[2]!!.second.first + " : " + realRanking[2]!!.second.second
+                    "${realRanking[2]?.first} :  " + realRanking[2]?.second?.first + " : " +
+                            realRanking[2]?.second?.second
                 addComponents(winner1Label, winner2Label, winner3Label, gameOverLabel, replayButton, goodbyeButton)
             }
 
             4 -> {
-                removeComponents(replayButton,goodbyeButton, winner4Label, winner3Label, winner2Label, winner1Label, gameOverLabel)
+                removeComponents(replayButton,goodbyeButton, winner4Label, winner3Label,
+                    winner2Label, winner1Label, gameOverLabel)
                 winner1Label.text =
-                    "${realRanking[0]!!.first} :  " + realRanking[0]!!.second.first + " : " + realRanking[0]!!.second.second
+                    "${realRanking[0]?.first} :  " + realRanking[0]?.second?.first + " : " +
+                            realRanking[0]?.second?.second
                 winner2Label.text =
-                    "${realRanking[1]!!.first} :  " + realRanking[1]!!.second.first + " : " + realRanking[1]!!.second.second
+                    "${realRanking[1]?.first} :  " + realRanking[1]?.second?.first + " : " +
+                            realRanking[1]?.second?.second
                 winner3Label.text =
-                    "${realRanking[2]!!.first} :  " + realRanking[2]!!.second.first + " : " + realRanking[2]!!.second.second
+                    "${realRanking[2]?.first} :  " + realRanking[2]?.second?.first + " : " +
+                            realRanking[2]?.second?.second
                 println(realRanking[3])
                 winner4Label.text =
-                    "${realRanking[3]!!.first} :  " + realRanking[3]!!.second.first + " : " + realRanking[3]!!.second.second
+                    "${realRanking[3]?.first} :  " + realRanking[3]?.second?.first + " : " +
+                            realRanking[3]?.second?.second
 
-                addComponents(winner1Label, winner2Label, winner3Label, winner4Label, gameOverLabel, replayButton, goodbyeButton)
+                addComponents(winner1Label, winner2Label, winner3Label, winner4Label,
+                    gameOverLabel, replayButton, goodbyeButton)
             }
 
             else -> {
-                removeComponents(replayButton,goodbyeButton, winner4Label, winner3Label, winner2Label, winner1Label, gameOverLabel)
+                removeComponents(replayButton,goodbyeButton, winner4Label,
+                    winner3Label, winner2Label, winner1Label, gameOverLabel)
                 winner1Label.text =
-                    "${realRanking[0]!!.first} :  " + realRanking[0]!!.second.first + " : " + realRanking[0]!!.second.second
+                    "${realRanking[0]?.first} :  " + realRanking[0]?.second?.first + " : " +
+                            realRanking[0]?.second?.second
                 winner2Label.text =
-                    "${realRanking[1]!!.first} :  " + realRanking[1]!!.second.first + " : " + realRanking[1]!!.second.second
+                    "${realRanking[1]?.first} :  " + realRanking[1]?.second?.first + " : " +
+                            realRanking[1]?.second?.second
                 addComponents(winner1Label, winner2Label, gameOverLabel, replayButton, goodbyeButton)
             }
 
