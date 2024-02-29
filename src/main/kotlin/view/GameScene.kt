@@ -346,7 +346,7 @@ class GameScene(private val rootService: RootService) :
         font = Font(size = 25, color = Color.pink, fontWeight = Font.FontWeight.BOLD)
     )
 
-    private val topPlayerCard1 = CardView(
+    private val topPlayerCard3 = CardView(
         posX = 450,
         posY = 70,
         front = ImageVisual(cardImageLoader.frontImageFor(CardColour.HEARTS, CardValue.KING))
@@ -365,7 +365,7 @@ class GameScene(private val rootService: RootService) :
         this.scale(0.55)
     }
 
-    private val topPlayerCard3 = CardView(
+    private val topPlayerCard1 = CardView(
         posX = 630,
         posY = 70,
         front = ImageVisual(cardImageLoader.frontImageFor(CardColour.HEARTS, CardValue.KING))
