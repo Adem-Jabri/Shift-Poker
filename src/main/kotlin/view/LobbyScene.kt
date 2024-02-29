@@ -223,16 +223,35 @@ class LobbyScene(private val rootService: RootService) :
                     p4Input.apply { text = "/4@@4/" },
                     p4Label
                 )
-                addPlayer.isDisabled = false
-//                if (p3Input.text.isNotEmpty()){
-//                    letsGoButton.isDisabled = false
-//                }
+                addPlayer.isDisabled = (p1Input.text.uppercase() == p2Input.text.uppercase()
+                        || p2Input.text.uppercase() == p3Input.text.uppercase()
+                        || p4Input.text.uppercase() == p3Input.text.uppercase()
+                        || p2Input.text.isBlank()|| p3Input.text.isBlank()
+                        || p1Input.text.isBlank()|| p2Input.text.length > 10
+                        || p1Input.text.length > 10|| p3Input.text.length > 10)
+                letsGoButton.isDisabled = (p1Input.text.uppercase() == p2Input.text.uppercase()
+                        || p2Input.text.uppercase() == p3Input.text.uppercase()
+                        || p4Input.text.uppercase() == p3Input.text.uppercase()
+                        || p2Input.text.isBlank()|| p3Input.text.isBlank()
+                        || p1Input.text.isBlank()|| p2Input.text.length > 10
+                        || p1Input.text.length > 10|| p3Input.text.length > 10)
             } else {
                 removeComponents(
                     p3Input.apply { text = "/3@@3/" },
                     p3Label
                 )
-                //letsGoButton.isDisabled = false
+                addPlayer.isDisabled = (p1Input.text.uppercase() == p2Input.text.uppercase()
+                        || p2Input.text.uppercase() == p3Input.text.uppercase()
+                        || p4Input.text.uppercase() == p3Input.text.uppercase()
+                        || p2Input.text.isBlank()|| p3Input.text.isBlank()
+                        || p1Input.text.isBlank()
+                        || p2Input.text.length > 10|| p1Input.text.length > 10)
+                letsGoButton.isDisabled = (p1Input.text.uppercase() == p2Input.text.uppercase()
+                        || p2Input.text.uppercase() == p3Input.text.uppercase()
+                        || p4Input.text.uppercase() == p3Input.text.uppercase()
+                        || p2Input.text.isBlank()|| p3Input.text.isBlank()
+                        || p1Input.text.isBlank()|| p2Input.text.length > 10
+                        || p1Input.text.length > 10|| p3Input.text.length > 10)
                 this.isDisabled = true
             }
         }
