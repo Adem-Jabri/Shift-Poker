@@ -22,13 +22,14 @@ class ShiftPokerGameService(val rootService: RootService) : AbstractRefreshingSe
             "The number of players must be between 2 and 4"
         }
 
-        listOfPlayers.shuffle()
+        //listOfPlayers.shuffle()
         val game = ShiftPokerGame(roundCount, listOfPlayers)
         rootService.game = game
         dealCards(game)
         onAllRefreshables { refreshAfterStartGame() }
     }
 
+    var counterOfRounds = 0
     /**
      * gives the turn to next player if the number of rounds is smaller or equal 7
      */
@@ -37,19 +38,32 @@ class ShiftPokerGameService(val rootService: RootService) : AbstractRefreshingSe
         checkNotNull(game) { "No game currently running." }
         // hide the cards of the active player
         rootService.cardService.hide()
+
         // give the turn to the next
         if (game.roundCount > 0) {
-            if (game.activePlayer < game.playerList.size - 1) {
-                game.activePlayer++
+            if (counterOfRounds <= game.playerList.size - 1) {
+                game.playerList.add(game.playerList.removeAt(0))
+                counterOfRounds ++
                 rootService.playerService.shifted = false
                 rootService.playerService.swapped = false
+                if(counterOfRounds == game.playerList.size ){
+                    game.roundCount --
+                    if (game.roundCount == 0){
+                        rootService.playerService.shifted = false
+                        rootService.playerService.swapped = false
+                        onAllRefreshables { refreshAfterEndGame(evaluateGame()) }
+                    }
+                }
             } else {
-                game.roundCount--
-                game.activePlayer = 0
+                //game.roundCount --
+                counterOfRounds = 1
+                game.playerList.add(game.playerList.removeAt(0))
                 rootService.playerService.shifted = false
                 rootService.playerService.swapped = false
             }
-        } else endGame()
+        }
+
+
         onAllRefreshables { refreshAfterNextPlayer() }
     }
 
@@ -58,6 +72,8 @@ class ShiftPokerGameService(val rootService: RootService) : AbstractRefreshingSe
      */
     fun endGame() {
         val rankList = evaluateGame()
+        rootService.playerService.shifted = false
+        rootService.playerService.swapped = false
         onAllRefreshables { refreshAfterEndGame(rankList) }
         rootService.game = null
     }
@@ -67,7 +83,7 @@ class ShiftPokerGameService(val rootService: RootService) : AbstractRefreshingSe
      * more have the same power of hand.
      * @return results which will contain the final results of the game.
      */
-    fun evaluateGame(): List<Pair<List<Player>, String>> {
+    fun evaluateGame(): MutableList<Pair<List<Player>, String>> {
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
         val playerHandRank: MutableList<Int> = mutableListOf()
@@ -83,7 +99,7 @@ class ShiftPokerGameService(val rootService: RootService) : AbstractRefreshingSe
         val groupedPlayers = sorted.groupBy({ it.value }, { it.key })
         val mappedNumbersToRank = groupedPlayers.mapKeys { (key, _) -> mapKeyToRank(key) }
         val swappedMap = mappedNumbersToRank.entries.associate { (key, value) -> value to key }.toList()
-        return swappedMap
+        return swappedMap.toMutableList()
     }
     private fun mapKeyToRank(key: Int): String {
         return when (key) {

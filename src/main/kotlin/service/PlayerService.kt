@@ -102,9 +102,7 @@ class PlayerService(private val rootService: RootService) : AbstractRefreshingSe
         game.shiftDeck[deckIndex] = game.playerList[game.activePlayer].revealedCards[revealedIndex]
         game.playerList[game.activePlayer].revealedCards[revealedIndex] = temp
         onAllRefreshables { refreshAfterSwap(false) }
-        rootService.shiftPokerGameService.nextPlayer()
-
-
+        //rootService.shiftPokerGameService.nextPlayer()
     }
 
     /**
@@ -126,7 +124,7 @@ class PlayerService(private val rootService: RootService) : AbstractRefreshingSe
         game.playerList[game.activePlayer].revealedCards = temp
 
         onAllRefreshables { refreshAfterSwap(true) }
-        rootService.shiftPokerGameService.nextPlayer()
+        //rootService.shiftPokerGameService.nextPlayer()
     }
 
     /**

@@ -26,7 +26,8 @@ class ShiftPokerGameServiceTest {
     private val revealedCards2 = mutableListOf(firstCard2, secondCard2, thirdCard2)
     val reus = Player("reus")
     val pique = Player("pique")
-    var playerList = mutableListOf(reus, pique)
+    val suarez = Player ("suarez")
+    var playerList = mutableListOf(reus,suarez, pique)
     //val lewa = Player("lewa")
     /**
      * test startGame method by giving first invalid attributes, and then test
@@ -65,17 +66,37 @@ class ShiftPokerGameServiceTest {
         assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
 
         //check whether activePlayer is incremented
-        gameService.startGame(2, playerList)
+        gameService.startGame(4, playerList)
         val game = rootService.game
         checkNotNull(game) { "No game currently running." }
         gameService.nextPlayer()
-        assertEquals(1, game.activePlayer)
+        assertEquals(suarez, game.playerList[game.activePlayer])
         gameService.nextPlayer()
-        assertEquals(0, game.activePlayer)
+        assertEquals(pique, game.playerList[game.activePlayer])
+        gameService.nextPlayer()
+        assertEquals(reus, game.playerList[game.activePlayer])
         // the game ends when all the rounds have been played
-        game.roundCount = 0
+        gameService.nextPlayer()
+        assertEquals(suarez, game.playerList[game.activePlayer])
+        gameService.nextPlayer()
+        assertEquals(pique, game.playerList[game.activePlayer])
+        gameService.nextPlayer()
+        //assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
+        assertEquals(reus, game.playerList[game.activePlayer])
+        // the game ends when all the rounds have been played
+        gameService.nextPlayer()
+        assertEquals(suarez, game.playerList[game.activePlayer])
+        gameService.nextPlayer()
+        assertEquals(pique, game.playerList[game.activePlayer])
         gameService.nextPlayer()
         //we cannot call nexPlayer() because the game was ended
+        assertEquals(reus, game.playerList[game.activePlayer])
+        // the game ends when all the rounds have been played
+        gameService.nextPlayer()
+        assertEquals(suarez, game.playerList[game.activePlayer])
+        gameService.nextPlayer()
+        assertEquals(pique, game.playerList[game.activePlayer])
+        gameService.nextPlayer()
         assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
     }
 

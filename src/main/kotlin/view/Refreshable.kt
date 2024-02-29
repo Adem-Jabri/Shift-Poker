@@ -32,6 +32,8 @@ interface Refreshable {
     /**
      * perform refreshes that are necessary after the last round was played
      */
-    fun refreshAfterEndGame(ranking: List<Pair<List<Player>, String>>) {}
+    fun refreshAfterEndGame(ranking: MutableList<Pair<List<Player>, String>>) {}
+
+
 
 }

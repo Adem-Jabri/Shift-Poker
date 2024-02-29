@@ -9,5 +9,5 @@ data class Card (var hidden: Boolean, val cardColour: CardColour, val value: Car
     /**
      * provide a string to represent the Card.
      */
-    override fun toString() = "$hidden $cardColour $value"
+    override fun toString() = "$cardColour $value"
 }
