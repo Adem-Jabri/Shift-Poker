@@ -12,8 +12,7 @@ import entity.*
 import tools.aqua.bgw.components.uicomponents.ComboBox
 
 /**
- * It is reached
- * when "start game" is clicked in [StartMenuScene].
+ * It is reached when "start game" is clicked in [StartMenuScene].
  * After providing the names of the players, the number of rounds
  * [letsGoButton] can be pressed. There is also a [returnButton] to come back to [StartMenuScene].
  */

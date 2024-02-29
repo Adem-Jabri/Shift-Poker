@@ -9,7 +9,7 @@ import tools.aqua.bgw.visual.ColorVisual
 import java.awt.Color
 
 /**
- * It is displayed directly at program start or reached
+ * It is displayed directly at program start or reached.
  * when "return" is clicked in [LobbyScene] or when "replay" is clicked in [EndScene].
  * [startButton] can be pressed to go to the [LobbyScene]. There is also a [exitButton] to end the program.
  */

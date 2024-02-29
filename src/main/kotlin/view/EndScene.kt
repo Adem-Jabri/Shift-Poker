@@ -11,7 +11,7 @@ import java.awt.Color
 
 /**
  * [MenuScene] that is displayed when the game is finished. It shows the score of the players.
- * Also, there are two buttons: one for starting a new game and one for
+ * Also there are two buttons: one for starting a new game and one for
  * quitting the program.
  */
 
@@ -79,22 +79,6 @@ class EndScene(private val rootService: RootService) :
 
 
     fun makeItEasy(ranking: MutableList<Pair<List<Player>, String>>): MutableList<Pair<Int, Pair<Player, String>>?> {
-//        val game = rootService.game
-//        checkNotNull(game) { "No game is currently running" }
-//        var realRanking = MutableList<Pair<Int, Pair<Player, String>>?>(game.playerList.size) { null }
-//        var i = 0
-//        var rankingIndex = 0
-//        while (i < game.playerList.size) {
-//            var x = 0
-//            for (j in 0..ranking[rankingIndex].first.size - 1) {
-//                realRanking[i + j] = Pair(i + 1, Pair(ranking[rankingIndex].first[j], ranking[rankingIndex].second))
-//                x++
-//                println("i: $i , j: $j , rankIndex: $rankingIndex , ")
-//            }
-//            i += x
-//            rankingIndex++
-//        }
-//        return realRanking
 
         val game = rootService.game
         checkNotNull(game) { "No game is currently running" }

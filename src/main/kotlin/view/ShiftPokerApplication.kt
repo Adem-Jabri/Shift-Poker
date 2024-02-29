@@ -7,7 +7,7 @@ import tools.aqua.bgw.core.MenuScene
 
 
 /**
- * Implementation of the BGW [BoardGameApplication] for the example card game "ShiftPoker"
+ * Implementation of the BGW [BoardGameApplication] for the example card game "ShiftPoker".
  */
 
 class ShiftPokerApplication : BoardGameApplication("ShiftPoker Game"), Refreshable {
