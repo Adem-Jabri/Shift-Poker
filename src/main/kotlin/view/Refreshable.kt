@@ -9,8 +9,8 @@ import entity.*
  * (usually to the view classes) that certain changes have been made to the entity
  * layer, so that the user interface can be updated accordingly.
  *
- * Default (empty) implementations are provided for all methods, so that implementing
- * UI classes only need to react to events relevant to them.
+ * Default (empty) implementations are provided for all methods, so that implementing UI classes
+ * only need to react to events relevant to them.
  *
  * @see AbstractRefreshingService
  *
