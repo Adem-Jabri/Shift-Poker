@@ -47,8 +47,18 @@ class LobbyScene(private val rootService: RootService) :
         text = "Messi"
     ).apply {
         onKeyTyped = {
-            letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank() ||
-                    this.text.length > 10 || p2Input .text.length > 10
+            letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank()|| p3Input.text.isBlank()
+                    || p4Input.text.isBlank()
+                    || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
+                    || this.text.uppercase() == p3Input.text.uppercase()
+                    || this.text.uppercase() == p4Input.text.uppercase()
+            if (!components.contains(p4Label)) {
+                addPlayer.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || p3Input.text.isBlank()
+                        || p4Input.text.isBlank()
+                        || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
+                        || this.text.uppercase() == p3Input.text.uppercase()
+                        || this.text.uppercase() == p4Input.text.uppercase()
+            }
         }
     }
 
@@ -64,9 +74,18 @@ class LobbyScene(private val rootService: RootService) :
         text = "Pique"
     ).apply {
         onKeyTyped = {
-            letsGoButton.isDisabled = p1Input.text.isBlank() || this.text.isBlank() ||
-                    this.text.length > 10 || p1Input .text.length > 10
-                    || this.text.uppercase() == p1Input.text.uppercase()
+            letsGoButton.isDisabled = this.text.isBlank() || p1Input.text.isBlank()|| p3Input.text.isBlank()
+                    || p4Input.text.isBlank()
+                    || this.text.length > 10 || this.text.uppercase() == p1Input.text.uppercase()
+                    || this.text.uppercase() == p3Input.text.uppercase()
+                    || this.text.uppercase() == p4Input.text.uppercase()
+            if (!components.contains(p4Label)) {
+                addPlayer.isDisabled = this.text.isBlank() || p1Input.text.isBlank() || p3Input.text.isBlank()
+                        || p4Input.text.isBlank()
+                        || this.text.length > 10 || this.text.uppercase() == p1Input.text.uppercase()
+                        || this.text.uppercase() == p3Input.text.uppercase()
+                        || this.text.uppercase() == p4Input.text.uppercase()
+            }
         }
     }
 
@@ -79,13 +98,23 @@ class LobbyScene(private val rootService: RootService) :
     private val p3Input: TextField = TextField(
         width = 200, height = 35,
         posX = 80, posY = 215,
-        text = "Reus"
+        text = "/3@@3/"
     ).apply {
         onKeyTyped = {
-            letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || !components.contains(this)
+            letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank()|| p4Input.text.isBlank()
+                    || p1Input.text.isBlank() || !components.contains(this)
                     || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
                     || this.text.uppercase() == p1Input.text.uppercase()
+                    || this.text.uppercase() == p4Input.text.uppercase()
+            if (!components.contains(p4Label)) {
+                addPlayer.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || p4Input.text.isBlank()
+                        || p1Input.text.isBlank() || !components.contains(this)
+                        || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
+                        || this.text.uppercase() == p1Input.text.uppercase()
+                        || this.text.uppercase() == p4Input.text.uppercase()
+            }
         }
+
     }
 
     private val p4Label = Label(
@@ -97,13 +126,23 @@ class LobbyScene(private val rootService: RootService) :
     private val p4Input: TextField = TextField(
         width = 200, height = 35,
         posX = 80, posY = 260,
-        text = "Lewa"
+        text = "/4@@4/"
     ).apply {
         onKeyTyped = {
-            letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || !components.contains(this)
-                    || this.text.length > 10 || this.text.uppercase() == p3Input.text.uppercase()
-                    || this.text.uppercase() == p2Input.text.uppercase()
+            letsGoButton.isDisabled = this.text.isBlank() || p2Input.text.isBlank()|| p3Input.text.isBlank()
+                    || p1Input.text.isBlank()
+                    || !components.contains(this)
+                    || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
                     || this.text.uppercase() == p1Input.text.uppercase()
+                    || this.text.uppercase() == p3Input.text.uppercase()
+            if (!components.contains(p4Label)) {
+                addPlayer.isDisabled = this.text.isBlank() || p2Input.text.isBlank() || p3Input.text.isBlank()
+                        || p1Input.text.isBlank()
+                        || !components.contains(this)
+                        || this.text.length > 10 || this.text.uppercase() == p2Input.text.uppercase()
+                        || this.text.uppercase() == p1Input.text.uppercase()
+                        || this.text.uppercase() == p3Input.text.uppercase()
+            }
         }
     }
 
@@ -155,12 +194,18 @@ class LobbyScene(private val rootService: RootService) :
                     p3Label
                 )
                 removePlayer.isDisabled = false
+                letsGoButton.isDisabled = p1Input.text.uppercase() == p2Input.text.uppercase()
+                        || p2Input.text.uppercase() == p3Input.text.uppercase()
+                        || p4Input.text.uppercase() == p3Input.text.uppercase()
             } else {
                 addComponents(
                     p4Input.apply { text = "Reus" },
                     p4Label
                 )
                 this.isDisabled = true
+                letsGoButton.isDisabled = p1Input.text.uppercase() == p2Input.text.uppercase()
+                        || p2Input.text.uppercase() == p3Input.text.uppercase()
+                        || p4Input.text.uppercase() == p3Input.text.uppercase()
             }
         }
     }
@@ -175,19 +220,19 @@ class LobbyScene(private val rootService: RootService) :
         onMouseClicked = {
             if (components.contains(p4Label)) {
                 removeComponents(
-                    p4Input,
+                    p4Input.apply { text = "/4@@4/" },
                     p4Label
                 )
                 addPlayer.isDisabled = false
-                if (p3Input.text.isNotEmpty()){
-                    letsGoButton.isDisabled = false
-                }
+//                if (p3Input.text.isNotEmpty()){
+//                    letsGoButton.isDisabled = false
+//                }
             } else {
                 removeComponents(
-                    p3Input,
+                    p3Input.apply { text = "/3@@3/" },
                     p3Label
                 )
-                letsGoButton.isDisabled = false
+                //letsGoButton.isDisabled = false
                 this.isDisabled = true
             }
         }
