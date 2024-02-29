@@ -15,7 +15,7 @@ import tools.aqua.bgw.util.Font
 import java.awt.Color
 
 /**
- * This is the main thing for the ShiftPoker game..
+ * This is the main thing for the ShiftPoker game.
  */
 
 class GameScene(private val rootService: RootService) :
