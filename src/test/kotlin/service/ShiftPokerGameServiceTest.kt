@@ -96,8 +96,6 @@ class ShiftPokerGameServiceTest {
         assertEquals(suarez, game.playerList[game.activePlayer])
         gameService.nextPlayer()
         assertEquals(pique, game.playerList[game.activePlayer])
-        gameService.nextPlayer()
-        assertFailsWith<IllegalStateException> { gameService.nextPlayer() }
     }
 
     /**

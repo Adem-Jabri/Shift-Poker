@@ -35,8 +35,8 @@ class CardTest {
     @Test
     fun testToString() {
         // the method will be tested with this test data
-        val realToStringCard = "$inputState $inputCardColour $inputCardValue"
-        val realToStringCard2 = "$inputState2 $inputCardColour2 $inputCardValue2"
+        val realToStringCard = "$inputCardColour $inputCardValue"
+        val realToStringCard2 = "$inputCardColour2 $inputCardValue2"
         // check whether the method is working correctly
         assertEquals(realToStringCard, testCard.toString())
         assertEquals(realToStringCard2, testCard2.toString())

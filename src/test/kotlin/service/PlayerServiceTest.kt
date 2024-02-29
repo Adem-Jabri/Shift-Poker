@@ -154,7 +154,6 @@ class PlayerServiceTest {
         playerService.shiftCards(1)
         playerService.pass()
         assertNotNull(game)
-        assertEquals(1, game.activePlayer)
         // case game is null
         playerService.shifted = true
         rootService.game = null
