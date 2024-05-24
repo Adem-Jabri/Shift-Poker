@@ -67,3 +67,7 @@ The evaluation of hands follows traditional poker rules, but if two players have
 ## End Scene
 
 ![EndScene](./endScene.png)
+
+## Enjoy the Game
+
+If you want to enjoy the game, feel free to contact me at my email address: [your-email@example.com](adem.jabri@tu-dortmund.de).
