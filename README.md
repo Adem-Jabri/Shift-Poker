@@ -50,4 +50,4 @@ The evaluation of hands follows traditional poker rules, but if two players have
 
 ## Domain Model
 
-![Domain Model](./images/DomainModelSvg.svg)
+![Domain Model](./DomainModelSvg.svg)
