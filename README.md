@@ -45,3 +45,9 @@ The evaluation of hands follows traditional poker rules, but if two players have
 | Four of a Kind   | Four cards of the same rank  | A♠ A♦ A♥ A♣       | Highest four of a kind and kicker           | 0.02%                    | 0.17%                     |
 | Straight Flush   | Straight of the same suit    | 8♣ 9♣ 10♣ J♣ Q♣   | Highest card in the straight flush          | 0.0014%                  | 0.028%                    |
 | Royal Flush      | Straight flush with Ace high | 10♥ J♥ Q♥ K♥ A♥   | Split Pot                                   | 0.000154%                | 0.0032%                   |
+
+*Table source: [Wikipedia](https://de.wikipedia.org/wiki/Poker)*
+
+## Domain Model
+
+![Domain Model](./images/DomainModelSvg.svg)
