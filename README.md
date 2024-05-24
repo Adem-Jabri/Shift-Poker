@@ -51,3 +51,20 @@ The evaluation of hands follows traditional poker rules, but if two players have
 ## Domain Model
 
 ![Domain Model](./DomainModelSvg.svg)
+
+## Start Menu Scene
+
+![StartMenuScene](./startMenuScene.png)
+
+## Lobby Scene
+
+![LobbyScene](./lobbyScene.png)
+
+## Game Scene
+![gameScene](https://github.com/Adem-Jabri/Shift-Poker/assets/117380404/b2eb5228-5219-46fb-a75e-4ef966d637bf)
+
+![GameScene](./gameScene.png)
+
+## End Scene
+
+![EndScene](./endScene.png)
