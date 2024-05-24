@@ -70,4 +70,4 @@ The evaluation of hands follows traditional poker rules, but if two players have
 
 ## Enjoy the Game
 
-If you want to enjoy the game, feel free to contact me at my email address: [adem.jabri@tu-dortmund.de](adem.jabri@tu-dortmund.de).
+If you want to enjoy the game, feel free to contact me at my email address: adem.jabri@tu-dortmund.de
